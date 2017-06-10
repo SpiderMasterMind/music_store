@@ -1,0 +1,19 @@
+Create albums route file
+	create get for "/albums/new", render "new" view
+
+Create new album form
+	Add fields for all data properties
+	Style submit button same as 'add to cart' button
+
+Create style for form
+	Set form inputs to be 100% width
+
+Add albums route for post to "/albums"
+	Read in `req.body`
+	Convert albums JSON to be `data` property on parent object
+	Clear existing JSON data
+	Add `last id` property to JSON data, set to 0
+	read in last ID and use to set currently selected albums ID
+	Increment last_id by 1 and add new album object to array of data
+	Save JSON file using fs module
+	Send back JSON object to response
