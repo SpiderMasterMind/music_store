@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 		bower_concat: {
 			all: {
 				dest: "public/javascripts/vendor/all.js",
-				dependancies: {
+				dependencies: {
 					"underscore": "jquery",
 					"backbone": "underscore"
 				}

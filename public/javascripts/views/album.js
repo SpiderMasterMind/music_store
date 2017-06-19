@@ -1,6 +1,13 @@
 var AlbumView = Backbone.View.extend({
 
 	tagName: "li",
+	events: {
+		"click a.button": "addToCart"
+	},
+	addToCart: function(event) {
+		event.preventDefault();
+		App.trigger("add_to_cart", this.model);
+	},
 	template: App.templates.album,
 	render: function() {
 		var id = this.model.get("id");
@@ -13,7 +20,7 @@ var AlbumView = Backbone.View.extend({
 		this.render();
 		this.model.view = this;																												// model 'back reference' so the model knows which view
 		
-	}																																								// is associated with it
+	},																																								// is associated with it
 
 });
 

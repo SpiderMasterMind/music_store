@@ -23,5 +23,6 @@ module.exports = {
 
 	getLastID: function() {
 		return this.__readFile().last_id;
+		console.log("last ID");
 	}	
 };

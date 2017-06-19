@@ -4,13 +4,14 @@ var Albums = require(path.resolve(path.dirname(__dirname), "modules/albums"));
 
 
 module.exports = function(router) {
+	debugger;
 	router.route("/albums").get(function(req, res) {
 		res.json(Albums.get());
 	}).post(function(req, res) {
 		var album = req.body;
 		var albums = Albums.get();
 
-		album.id = Albums.getLastID + 1;
+		album.id = Albums.getLastID() + 1;
 		albums.push(album);
 		Albums.set(albums);
 		res.json(album);
@@ -34,9 +35,10 @@ module.exports = function(router) {
 	});
 
 	router.get("/albums/new", function(req, res) {
-		res.render("new");
-
-	})
+		res.render("new", {
+			albums: Albums.get()
+		});
+	});
 };
 
 // create a post route that will take a request body, take the last ID & increment by 1, attach as ID to new record, save to data array
